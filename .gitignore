@@ -3,3 +3,5 @@ couverture/*
 
 logs/*
 !logs/.gitkeep
+/vendor/
+/code/vendor/
