@@ -1,0 +1,5 @@
+couverture/*
+!couverture/.gitkeep
+
+logs/*
+!logs/.gitkeep
