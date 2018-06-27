@@ -10,6 +10,11 @@ services:
             - "8080:80"
         volumes:
             - ./code:/root:cached
+        environment:
+            - DB_HOST=mariadb
+            - DB_USER=root
+            - DB_PASS=root
+            - DB_NAME=ouvrages
     mariadb:
         image: mariadb:10.3
         restart: 'unless-stopped'

@@ -5,10 +5,24 @@
  * Ce script vérifie que les différentes collections sont valides et alertent les administrateurs dans le cas contraire.
  */
 
-$host     = 'mariadb';
-$user     = 'root';
-$password = 'root';
-$dbname   = 'ouvrages';
+
+if (!isset($_ENV['DB_HOST']) || empty($_ENV['DB_HOST'])) {
+    throw new Exception('DB host is not configured as an environment variable.');
+}
+if (!isset($_ENV['DB_USER']) || empty($_ENV['DB_USER'])) {
+    throw new Exception('DB user is not configured as an environment variable.');
+}
+if (!isset($_ENV['DB_PASS']) || empty($_ENV['DB_PASS'])) {
+    throw new Exception('DB pass is not configured as an environment variable.');
+}
+if (!isset($_ENV['DB_NAME']) || empty($_ENV['DB_NAME'])) {
+    throw new Exception('DB name is not configured as an environment variable.');
+}
+
+$host     = $_ENV['DB_HOST'];
+$user     = $_ENV['DB_USER'];
+$password = $_ENV['DB_PASS'];
+$dbname   = $_ENV['DB_NAME'];
 
 $bdd = mysql_connect($host, $user, $password);
 mysql_set_charset("UTF8", $bdd);
